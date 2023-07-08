@@ -1,17 +1,42 @@
+// Computer choices Rock, Paper and Scissors with 33.3333% chances each
 function getComputerChoice() {
     let randomNumber = (Math.random() * 100) + 1;
     let randomChoice;
 
     if (randomNumber < 100/3) {
-        randomChoice = "Rock"
+        randomChoice = "rock"
     } else if (randomNumber < 100*2/3) {
-        randomChoice = "Paper"
+        randomChoice = "paper"
     } else {
-        randomChoice = "Scissors"
+        randomChoice = "scissors"
     }
     
     return randomChoice;
-
 }
 
-console.log(getComputerChoice());
+// Player and Computer makes their selection; Player Choice is case insensitive
+const playerSelection = "RoCk";
+const computerSelection = getComputerChoice();
+
+
+// Round winner (or draw!) is decided according to playerSelection and computerSelection
+function playRound(playerSelection, computerSelection) {
+
+    if (playerSelection.toLowerCase() === computerSelection) {
+        return `Draw!`;
+    } else if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") {
+        return `You Win! Rock beats Scissors!`;
+    } else if (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") {
+        return `You Win! Paper beats Rock!`;
+    } else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") {
+        return `You Win! Scissors beats Paper!`;        
+    } else {
+        return `You Lost!`
+    }
+}
+
+
+
+console.log(computerSelection);
+
+console.log(playRound(playerSelection,computerSelection));
