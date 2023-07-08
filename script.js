@@ -18,11 +18,17 @@ function getComputerChoice() {
 const playerSelection = "RoCk";
 const computerSelection = getComputerChoice();
 
+// playerWins, computerWins and draws will track the results of each Round
+let playerWins = 0;
+let computerWins = 0;
+let draws = 0;
 
 // Round winner (or draw!) is decided according to playerSelection and computerSelection
 function playRound(playerSelection, computerSelection) {
+    
 
     if (playerSelection.toLowerCase() === computerSelection) {
+        draws ++;
         return `Draw!`;
     } else if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") {
         return `You Win! Rock beats Scissors!`;
@@ -35,8 +41,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
-
 console.log(computerSelection);
 
 console.log(playRound(playerSelection,computerSelection));
+
+console.log(draws);
