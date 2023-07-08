@@ -18,12 +18,15 @@ function getComputerChoice() {
 let playerSelection;
 let computerSelection;
 
-// Variables that will track the results of each Round, starts the game at 0
+// Variables that will track the results of each Round, starting the game at 0
 let playerWins = 0;
 let computerWins = 0;
 let draws = 0;
 
-// Round winner (or draw!) is decided according to playerSelection and computerSelection
+// Variable (string) that will announce the winner
+let winner;
+
+// Round winner (or draw) is decided according to playerSelection and computerSelection
 // Results are tracked into their respective variables
 function playRound(playerSelection, computerSelection) {
     
@@ -45,20 +48,33 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// Game plays for 5 rounds
+// Game plays for 5 Rounds
 function game() {
     for (let i = 0; i < 5; i++) {
         // Computer makes a choice
         computerSelection = getComputerChoice()
-        // Player makes a choice
+        // Player makes a choice via prompt
         playerSelection = prompt("Rock, Paper or Scissors?","Rock")
+        // Round plays
         playRound(playerSelection, computerSelection)
-
     }
-    console.log(`Player won ${playerWins} time(s)!`);
-    console.log(`Computer won ${computerWins} time(s)`);
-    console.log(`There were ${draws} draw(s)!`);
+
+    // Declaring the Game Winner after 5 Rounds
+    if (playerWins > computerWins) {
+        winner = "Player Won the Game after 5 Rounds!!"
+    } else if (computerWins > playerWins) {
+        winner = "Computer Won after 5 Rounds!!"
+    } else {
+        winner = "Draw after 5 Rounds!!!!"
+    }
 }
 
 // Play Game!
 game()
+
+// Show the Results!
+
+console.log(`Player won ${playerWins} time(s)!`);
+console.log(`Computer won ${computerWins} time(s)`);
+console.log(`There were ${draws} draw(s)!`);
+console.log(winner);
